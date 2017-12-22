@@ -1,5 +1,5 @@
 module.exports.login = function(req, res) {
-    res.render('index', { title: 'Вход' });
+    res.render('login', { title: 'Вход' });
 }
 
 module.exports.register = function(req, res) {
