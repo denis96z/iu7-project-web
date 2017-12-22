@@ -3,5 +3,5 @@ module.exports.login = function(req, res) {
 }
 
 module.exports.register = function(req, res) {
-    res.render('index', { title: 'Регистрация' });
+    res.render('register', { title: 'Регистрация' });
 }
