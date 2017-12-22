@@ -1,11 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+router.get('/', function(req, res) {
+    res.render('index', { title: 'Добро пожаловать' });
+});
+
 var ctrlQuests = require('../controllers/quests');
 
-router.get('/', ctrlQuests.quests_list);
-router.get('/edit', ctrlQuests.quest_edit);
-router.get('/preview', ctrlQuests.quest_preview);
+router.get('/questlist', ctrlQuests.questlist);
+router.get('/questedit', ctrlQuests.questedit);
+router.get('/questpreview', ctrlQuests.questpreview);
 
 var ctrlAuthorization = require('../controllers/authorization');
 

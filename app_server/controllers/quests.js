@@ -1,11 +1,11 @@
-module.exports.quests_list = function(req, res) {
-    res.render('index', { title: 'Список квестов' });
+module.exports.questlist = function(req, res) {
+    res.render('questlist', { title: 'Доступные квесты' });
 }
 
-module.exports.quest_edit = function(req, res) {
+module.exports.questedit = function(req, res) {
     res.render('index', { title: 'Создание квеста' });
 }
 
-module.exports.quest_preview = function(req, res) {
+module.exports.questpreview = function(req, res) {
     res.render('index', { title: 'Прохождение квеста' });
 }
