@@ -10,11 +10,14 @@ block content
     .col-xs-12.col-sm-8
       .row.list-group
         .col-xs-12.list-group-item
-          h4
-            a(href="/quest") Математика
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star-empty
-          p.description Решение нескольких задач по теории вероятностей.
+          ul
+            each info in questInfo
+              li
+                h4
+                  a(href="/quest")=info.title
+                p.rating
+                  -for(var i = 1; i <= info.rating; i++)
+                    span.glyphicon.glyphicon-star
+                  -for(i = info.rating; i < 5; i++)
+                    span.glyphicon.glyphicon-star-empty
+                p.description=info.description

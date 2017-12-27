@@ -3,13 +3,12 @@ extends layout
 block content
   .row.page-header
     .col-lg-12
-      h1=title
+      h1=questInfo.title
       p.rating
-        span.glyphicon.glyphicon-star
-        span.glyphicon.glyphicon-star
-        span.glyphicon.glyphicon-star
-        span.glyphicon.glyphicon-star
-        span.glyphicon.glyphicon-star-empty
+        -for(var i = 1; i <= questInfo.rating; i++)
+          span.glyphicon.glyphicon-star
+        -for(i = questInfo.rating; i < 5; i++)
+          span.glyphicon.glyphicon-star-empty
   .row
     .col-xs-12.col-md-9
       .row
@@ -18,14 +17,14 @@ block content
             .panel-heading
               h2.panel-title Описание
             .panel-body
-              p=description
+              p=questInfo.description
           .panel.panel-primary
             .panel-heading
               h2.panel-title Завершили квест первыми
             .panel-body
               ul
-                li Дмитрий Орлов
-                li Денис Зиновьев
+                each participant in questInfo.topParticipants
+                  li=participant
           .panel.panel-primary
             .panel-heading
               h2.panel-title Оценить квест
@@ -41,4 +40,4 @@ block content
             .panel-heading
               h2.panel-title Место проведения
             .panel-body
-              img.img-responsive.img-rounded(src='https://static-maps.yandex.ru/1.x/?ll=37.620070,55.753630&size=450,450&scale=1.5&z=13&l=map&pt=37.620070,55.753630,pm2gnm')
+              img.img-responsive.img-rounded(src=questInfo.location)
