@@ -7,9 +7,9 @@ router.get('/', function(req, res) {
 
 var ctrlQuests = require('../controllers/quests');
 
+router.get('/quest', ctrlQuests.quest);
 router.get('/questlist', ctrlQuests.questlist);
 router.get('/questedit', ctrlQuests.questedit);
-router.get('/questpreview', ctrlQuests.questpreview);
 
 var ctrlAuthorization = require('../controllers/authorization');
 

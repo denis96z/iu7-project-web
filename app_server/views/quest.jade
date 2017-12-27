@@ -1,5 +1,44 @@
 extends layout
 
 block content
-  h1= title
-  p Not implemented yet
+  .row.page-header
+    .col-lg-12
+      h1=title
+      p.rating
+        span.glyphicon.glyphicon-star
+        span.glyphicon.glyphicon-star
+        span.glyphicon.glyphicon-star
+        span.glyphicon.glyphicon-star
+        span.glyphicon.glyphicon-star-empty
+  .row
+    .col-xs-12.col-md-9
+      .row
+        .col-xs-12.col-sm-6
+          .panel.panel-primary
+            .panel-heading
+              h2.panel-title Описание
+            .panel-body
+              p=description
+          .panel.panel-primary
+            .panel-heading
+              h2.panel-title Завершили квест первыми
+            .panel-body
+              ul
+                li Дмитрий Орлов
+                li Денис Зиновьев
+          .panel.panel-primary
+            .panel-heading
+              h2.panel-title Оценить квест
+            .panel-body
+              p.rating
+                span.glyphicon.glyphicon-star-empty
+                span.glyphicon.glyphicon-star-empty
+                span.glyphicon.glyphicon-star-empty
+                span.glyphicon.glyphicon-star-empty
+                span.glyphicon.glyphicon-star-empty
+        .col-xs-12.col-sm-6.location-map
+          .panel.panel-primary
+            .panel-heading
+              h2.panel-title Место проведения
+            .panel-body
+              img.img-responsive.img-rounded(src='https://static-maps.yandex.ru/1.x/?ll=37.620070,55.753630&size=450,450&scale=1.5&z=13&l=map&pt=37.620070,55.753630,pm2gnm')
