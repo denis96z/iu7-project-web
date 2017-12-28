@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
 
 var ctrlQuests = require('../controllers/quests');
 
-router.get('/quest', ctrlQuests.quest);
+router.get('/quest/:questid', ctrlQuests.quest);
 router.get('/questlist', ctrlQuests.questlist);
 router.get('/questedit', ctrlQuests.questedit);
 

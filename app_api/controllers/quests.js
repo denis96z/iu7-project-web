@@ -15,7 +15,6 @@ module.exports.getQuests = function(req, res) {
 };
 
 module.exports.getQuest = function(req, res) {
-    console.log('Handled?');
     if (req.params && req.params.questid) {
         quest.findById(req.params.questid).exec(function (err, data) {
             if (!data) {

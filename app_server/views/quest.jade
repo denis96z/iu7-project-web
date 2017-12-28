@@ -18,13 +18,14 @@ block content
               h2.panel-title Описание
             .panel-body
               p=questInfo.description
-          .panel.panel-primary
-            .panel-heading
-              h2.panel-title Завершили квест первыми
-            .panel-body
-              ul
-                each participant in questInfo.topParticipants
-                  li=participant
+          if questInfo.topParticipants.length > 0
+            .panel.panel-primary
+              .panel-heading
+                h2.panel-title Завершили квест первыми
+              .panel-body
+                ul
+                  each participant in questInfo.topParticipants
+                    li=participant
           .panel.panel-primary
             .panel-heading
               h2.panel-title Оценить квест
@@ -35,9 +36,10 @@ block content
                 span.glyphicon.glyphicon-star-empty
                 span.glyphicon.glyphicon-star-empty
                 span.glyphicon.glyphicon-star-empty
-        .col-xs-12.col-sm-6.location-map
-          .panel.panel-primary
-            .panel-heading
-              h2.panel-title Место проведения
-            .panel-body
-              img.img-responsive.img-rounded(src=questInfo.location)
+        if questInfo.location
+          .col-xs-12.col-sm-6.location-map
+            .panel.panel-primary
+              .panel-heading
+                h2.panel-title Место проведения
+              .panel-body
+                img.img-responsive.img-rounded(src=questInfo.location)

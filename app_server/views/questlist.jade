@@ -14,7 +14,7 @@ block content
             each info in questInfo
               li
                 h4
-                  a(href="/quest")=info.title
+                  a(href='/quest/'+info._id)=info.title
                 p.rating
                   -for(var i = 1; i <= info.rating; i++)
                     span.glyphicon.glyphicon-star

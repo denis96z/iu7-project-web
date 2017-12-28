@@ -1,35 +1,59 @@
+var request = require('request');
+const host = 'http://localhost:3000';
+
 module.exports.quest = function(req, res) {
-    res.render('quest', {
-        title: 'Математика',
-        questInfo: {
-            title: 'Математика',
-            description: 'Решение задач по теории вероятностей.',
-            location: 'https://static-maps.yandex.ru/1.x/?ll=' +
-                '37.620070,55.753630' +
-                '&size=450,450&scale=1.5&z=13&l=map&pt=' +
-                '37.620070,55.753630' +
-                ',pm2gnm',
-            topParticipants: ['Дмитрий Орлов', 'Денис Зиновьев'],
-            rating: 4
-        }
-    });
+    if (req.params && req.params.questid) {
+        var reqOptions = {
+            url: host + '/api/quest/' + req.params.questid,
+            method: 'GET',
+            json: {},
+            qs: {}
+        };
+        request(reqOptions, function (err, response, body) {
+            console.log(body);
+
+            if (err || !response) {
+                res.status(404);
+            } else {
+                var coords = (body.location && body.location.length == 2) ?
+                    (body.location[0].toString() + ',' +
+                    body.location[1].toString()) : null;
+    
+                res.render('quest', {
+                    title: body.title,
+                    questInfo: {
+                        title: body.title,
+                        description: body.description,
+                        location: coords ?
+                            ('https://static-maps.yandex.ru/1.x/?ll=' +
+                            coords + '&size=450,450&scale=1.5&z=13&l=map&pt=' +
+                            coords + ',pm2gnm') : null,
+                        topParticipants: body.topParticipants,
+                        rating: body.rating
+                    }
+                });
+            }
+        });
+    } else {
+        res.status(404);
+    }
 }
 
 module.exports.questlist = function(req, res) {
-    res.render('questlist', {
-        title: 'Доступные квесты',
-        questInfo: [{
-            title: 'Математика',
-            description: 'Решение задач по теории вероятностей.',
-            rating: 4
-        }, {
-            title: 'Физика',
-            description: 'Выполнение лабораторной работы.',
-            rating: 2
-        }]
+    var reqOptions = {
+        url: host + '/api/questlist',
+        method: 'GET',
+        json: {},
+        qs: {}
+    };
+    request(reqOptions, function (err, response, body) {
+        res.render('questlist', {
+            title: 'Список квестов',
+            questInfo: body
+        });
     });
-}
+};
 
 module.exports.questedit = function(req, res) {
-    res.render('index', { title: 'Создание квеста' });
+    res.status(501);
 }
