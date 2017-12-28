@@ -50,5 +50,5 @@ module.exports.addQuest = function(req, res) {
 };
 
 module.exports.addRating = function(req, res) {
-
+    res.status(501);
 };
