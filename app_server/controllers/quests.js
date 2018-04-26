@@ -10,14 +10,12 @@ module.exports.quest = function(req, res) {
             qs: {}
         };
         request(reqOptions, function (err, response, body) {
-            console.log(body);
-
             if (err || !response) {
                 res.status(404);
             } else {
                 var coords = (body.location && body.location.length == 2) ?
-                    (body.location[0].toString() + ',' +
-                    body.location[1].toString()) : null;
+                    (body.location[1].toString() + ',' +
+                    body.location[0].toString()) : null;
     
                 res.render('quest', {
                     title: body.title,
